@@ -20,3 +20,10 @@ docker rmi pos.api or docker rmi id
 
 # show docker running
 docker ps
+
+# -----------Database--------------
+# create migration 
+dotnet ef migrations add name-migration 
+
+# run migration 
+dotnet ef database update
