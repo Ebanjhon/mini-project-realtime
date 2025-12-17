@@ -1,8 +1,9 @@
 import React from 'react'
+import { formatPrice } from '../../utils';
 
 const CartProduct = ({ product, onAddToCart }) => {
     return (
-        <div className="border rounded-lg shadow hover:shadow-lg transition p-3 flex flex-col bg-white" style={{ height: "379px" }}>
+        <div className="border rounded-lg shadow hover:shadow-lg transition p-3 flex flex-col bg-white" style={{ height: "406px" }}>
             <img
                 src={product.imageObjs.length > 0
                     ? product.imageObjs[0].imageUrl
@@ -22,7 +23,7 @@ const CartProduct = ({ product, onAddToCart }) => {
             </div>
 
             <div className="mt-2">
-                <p className="text-blue-600 font-bold text-lg mb-2 text-left">{product.price.toLocaleString()}₫</p>
+                <p className="text-blue-600 font-bold text-lg mb-2 text-left">{formatPrice(product.price.toLocaleString())}</p>
 
                 <button
                     onClick={() => onAddToCart(product)}

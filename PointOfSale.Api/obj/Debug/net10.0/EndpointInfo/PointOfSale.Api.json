@@ -57,6 +57,49 @@
         }
       }
     },
+    "/api/Order/GetListOrder": {
+      "get": {
+        "tags": [
+          "Order"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Order/CreateOrder": {
+      "post": {
+        "tags": [
+          "Order"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EM_OrderCreate"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EM_OrderCreate"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EM_OrderCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Product/GetProductList": {
       "get": {
         "tags": [
@@ -235,6 +278,39 @@
   },
   "components": {
     "schemas": {
+      "EM_OrderCreate": {
+        "required": [
+          "productObjs"
+        ],
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "productObjs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ItemProduct"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "ItemProduct": {
+        "type": "object",
+        "properties": {
+          "productID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "M_Category": {
         "required": [
           "name"
@@ -318,6 +394,9 @@
   "tags": [
     {
       "name": "Category"
+    },
+    {
+      "name": "Order"
     },
     {
       "name": "Product"

@@ -1,6 +1,7 @@
 import React, { useState, forwardRef, useImperativeHandle } from 'react'
 import CartProductSelect from '../../../components/CartProductSelect/CartProductSelect';
 import { formatPrice } from '../../../utils';
+import axios from 'axios';
 
 const OrderDetail = forwardRef((props, ref) => {
     const [products, setProducts] = useState([]);
@@ -45,9 +46,27 @@ const OrderDetail = forwardRef((props, ref) => {
         setProducts(prev => prev.filter(item => item.id !== id));
     }
 
-    const handleOrder = () => {
-        alert("Chức năng thanh toán chưa được triển khai.");
-    }
+    const handleOrder = async () => {
+        const apiData = {
+            status: 1,
+            ProductObjs: products.map(p => ({
+                productID: p.id,
+                quantity: p.quantity
+            }))
+        };
+
+        try {
+            const res = await axios.post("https://localhost:44382/api/Order/CreateOrder", apiData);
+            if (res.data.success) {
+                alert("Đơn hàng đã được tạo thành công!");
+                setProducts([]);
+            }else{
+                alert("Tạo đơn hàng thất bại. Vui lòng thử lại.");
+            }
+        } catch (error) {
+            console.error("Error fetching categories:", error);
+        }
+    };
 
     return (
         <div className='rounded-lg shadow-sm border flex flex-col h-full'>

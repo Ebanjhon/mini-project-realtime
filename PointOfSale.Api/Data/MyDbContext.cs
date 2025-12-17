@@ -12,6 +12,9 @@ namespace PointOfSale.Api.Data
         public DbSet<M_Category> Categories { get; set; }
         public DbSet<M_Product> Products { get; set; }
         public DbSet<M_Image> Images { get; set; }
+        public DbSet<M_Order> Orders { get; set; }
+        public DbSet<M_OrderDetail> OrderDetails { get; set; }
+
 
         // Cấu hình quan hệ giữa các bảng
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,6 +37,20 @@ namespace PointOfSale.Api.Data
             modelBuilder.Entity<M_Product>()
                .Property(p => p.Price)
                .HasPrecision(18, 2);
+
+            // M_Order ↔ M_OrderDetail
+            modelBuilder.Entity<M_OrderDetail>()
+                .HasKey(od => new { od.OrderId, od.ProductId });
+
+            modelBuilder.Entity<M_OrderDetail>()
+                .HasOne(od => od.Order)
+                .WithMany(o => o.OrderProducts)
+                .HasForeignKey(od => od.OrderId);
+
+            modelBuilder.Entity<M_OrderDetail>()
+                .HasOne(od => od.Product)
+                .WithMany(p => p.OrderProducts)
+                .HasForeignKey(od => od.ProductId);
         }
 
     }

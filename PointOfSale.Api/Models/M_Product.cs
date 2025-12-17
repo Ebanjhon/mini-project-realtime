@@ -29,6 +29,9 @@ namespace PointOfSale.Api.Models
         [ForeignKey("CategoryID")]
         [JsonIgnore]
         public M_Category Category { get; set; }
+
+        [JsonIgnore]
+        public List<M_OrderDetail> OrderProducts { get; set; } = new();
     }
 
     public class EM_ProductCreate

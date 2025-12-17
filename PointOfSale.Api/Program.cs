@@ -46,6 +46,8 @@ builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(build
 builder.Services.AddScoped<IS_User, S_User>();
 builder.Services.AddScoped<IS_Category, S_Category>();
 builder.Services.AddScoped<IS_Product, S_Product>();
+builder.Services.AddScoped<IS_Order, S_Order>();
+builder.Services.AddScoped<IS_OrderDetail, S_OrderDetail>();
 builder.Services.AddScoped<S_Minio>();
 
 var app = builder.Build();
