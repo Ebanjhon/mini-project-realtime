@@ -42,7 +42,7 @@ namespace PointOfSale.Api.Services
                 .Include(p => p.ImageObjs)
                 .Where(x => x.IsActive);
 
-            if (categoryId.HasValue)
+            if (categoryId.HasValue && categoryId != 0)
                 query = query.Where(x => x.CategoryID == categoryId.Value);
 
             if (!string.IsNullOrWhiteSpace(keyword))

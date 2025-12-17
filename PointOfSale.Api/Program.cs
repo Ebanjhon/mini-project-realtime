@@ -23,6 +23,17 @@ builder.Services.AddSingleton<IAmazonS3>(sp =>
     );
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+    {
+        builder.AllowAnyOrigin()    // Cho phép tất cả origin
+               .AllowAnyHeader()    // Cho phép tất cả header
+               .AllowAnyMethod();   // Cho phép tất cả method (GET, POST, PUT, DELETE...)
+    });
+});
+
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -38,6 +49,8 @@ builder.Services.AddScoped<IS_Product, S_Product>();
 builder.Services.AddScoped<S_Minio>();
 
 var app = builder.Build();
+
+app.UseCors("AllowAll");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
