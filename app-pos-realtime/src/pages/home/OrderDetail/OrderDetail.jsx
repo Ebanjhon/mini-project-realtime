@@ -72,7 +72,7 @@ const OrderDetail = forwardRef((props, ref) => {
 
     return (
         <div className='rounded-lg shadow-sm border flex flex-col h-full'>
-            <h2 className="text-xl font-bold w-full ml-2 mt-2">Chi tiết đơn hàng</h2>
+            <h2 className="text-xl font-bold w-full ml-2 mt-2">Chi tiết giỏ hàng</h2>
             <div className="flex items-center justify-between border-b mx-2 pb-2 px-2" style={{ margin: "0px" }}>
                 <p className="text-sm text-gray-700">
                     Đã chọn {products.length} sản phẩm

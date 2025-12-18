@@ -3,8 +3,24 @@
   "WorkspaceRootPath": "D:\\mini-project-realtime\\PointOfSale.Api\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5DB3451A-5ADD-55E0-2E0B-80D71D749DFD}|PointOfSale.Api.csproj|d:\\mini-project-realtime\\pointofsale.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{5DB3451A-5ADD-55E0-2E0B-80D71D749DFD}|PointOfSale.Api.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{5DB3451A-5ADD-55E0-2E0B-80D71D749DFD}|PointOfSale.Api.csproj|d:\\mini-project-realtime\\pointofsale.api\\models\\basemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DB3451A-5ADD-55E0-2E0B-80D71D749DFD}|PointOfSale.Api.csproj|solutionrelative:models\\basemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DB3451A-5ADD-55E0-2E0B-80D71D749DFD}|PointOfSale.Api.csproj|d:\\mini-project-realtime\\pointofsale.api\\models\\m_product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DB3451A-5ADD-55E0-2E0B-80D71D749DFD}|PointOfSale.Api.csproj|solutionrelative:models\\m_product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DB3451A-5ADD-55E0-2E0B-80D71D749DFD}|PointOfSale.Api.csproj|d:\\mini-project-realtime\\pointofsale.api\\services\\s_product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DB3451A-5ADD-55E0-2E0B-80D71D749DFD}|PointOfSale.Api.csproj|solutionrelative:services\\s_product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DB3451A-5ADD-55E0-2E0B-80D71D749DFD}|PointOfSale.Api.csproj|d:\\mini-project-realtime\\pointofsale.api\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DB3451A-5ADD-55E0-2E0B-80D71D749DFD}|PointOfSale.Api.csproj|solutionrelative:controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5DB3451A-5ADD-55E0-2E0B-80D71D749DFD}|PointOfSale.Api.csproj|d:\\mini-project-realtime\\pointofsale.api\\models\\m_order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5DB3451A-5ADD-55E0-2E0B-80D71D749DFD}|PointOfSale.Api.csproj|solutionrelative:models\\m_order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +35,66 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\mini-project-realtime\\PointOfSale.Api\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "D:\\mini-project-realtime\\PointOfSale.Api\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-12-18T05:42:27.811Z",
+              "Title": "BaseModel.cs",
+              "DocumentMoniker": "D:\\mini-project-realtime\\PointOfSale.Api\\Models\\BaseModel.cs",
+              "RelativeDocumentMoniker": "Models\\BaseModel.cs",
+              "ToolTip": "D:\\mini-project-realtime\\PointOfSale.Api\\Models\\BaseModel.cs",
+              "RelativeToolTip": "Models\\BaseModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T09:59:31.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "M_Product.cs",
+              "DocumentMoniker": "D:\\mini-project-realtime\\PointOfSale.Api\\Models\\M_Product.cs",
+              "RelativeDocumentMoniker": "Models\\M_Product.cs",
+              "ToolTip": "D:\\mini-project-realtime\\PointOfSale.Api\\Models\\M_Product.cs",
+              "RelativeToolTip": "Models\\M_Product.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAA/wCQAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T09:59:09.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "S_Product.cs",
+              "DocumentMoniker": "D:\\mini-project-realtime\\PointOfSale.Api\\Services\\S_Product.cs",
+              "RelativeDocumentMoniker": "Services\\S_Product.cs",
+              "ToolTip": "D:\\mini-project-realtime\\PointOfSale.Api\\Services\\S_Product.cs",
+              "RelativeToolTip": "Services\\S_Product.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T09:58:59.642Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "D:\\mini-project-realtime\\PointOfSale.Api\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "Controllers\\OrderController.cs",
+              "ToolTip": "D:\\mini-project-realtime\\PointOfSale.Api\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "Controllers\\OrderController.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAgwEMAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T09:58:23.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "M_Order.cs",
+              "DocumentMoniker": "D:\\mini-project-realtime\\PointOfSale.Api\\Models\\M_Order.cs",
+              "RelativeDocumentMoniker": "Models\\M_Order.cs",
+              "ToolTip": "D:\\mini-project-realtime\\PointOfSale.Api\\Models\\M_Order.cs",
+              "RelativeToolTip": "Models\\M_Order.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAwBQAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-18T09:57:53.975Z",
               "EditorCaption": ""
             }
           ]

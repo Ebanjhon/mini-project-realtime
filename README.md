@@ -1,29 +1,29 @@
 # mini-project-realtime
 
-# how to create image 
- docker build -t name-image .
+# How to run project
 
-# how to create container and run port: 8080
-docker run -d -p 8080:8080 --name name-container name-image
+## Backend sử dụng công nghệ ASP.Net, Sql-server, MinIo
+tại thư mục gốc có chứa file docker-compose
+- dùng lệnh: `docker-compose up -d` để chạy toàn bộ các servcie
+### Sql-Server
+- có thể sử dụng mySQLServer, Azura data studio...
+- sau đó đăng nhập với thông tin sau: localhost,1433, user: sa, password: 3Ban@12345
 
-# how to get list docker image
-docker images
+tiếp đến tạo database, trong project này sử dụng tên là PosDatabase
+------------------------------
+CREATE DATABASE PosDatabase;
+GO
+------------------------------
+### MinIo
+- trong docker bấm truy cập đường dẫn của minIo đang chạy.
+- đăng nhập với user: admin, password: 3B@n12345 và tạo bucket với name: pos-storage, và chuyện polify sang public
+### ASP.Net web API
+- sử dụng IDE Visual code, mở source project và mở package manager console để tiến hành migration
+(chú ý) vì migration ở ngoài docker nên hãy chuyển `sqlserver` thành `localhost` ở appsetting.json trước rồi migration, khi migration xong trả lại appsetting.json như cũ
+### create migration `dotnet ef migrations add name-migration` 
+### run migration `dotnet ef database update`
 
-# how to stop docker image
-
-# how to remove docker container and image
-docker stop pos-api-container
-
-docker rm pos-api-container
-
-docker rmi pos.api or docker rmi id
-
-# show docker running
-docker ps
-
-# -----------Database--------------
-# create migration 
-dotnet ef migrations add name-migration 
-
-# run migration 
-dotnet ef database update
+## Frontend sử dụng công nghệ ReactJS
+di chuyển đến thư mục app-pos-realtime
+- B1: build dự án chạy lệnh # `npm run build`
+- B2: chạy project dùng lệnh # `npm start` hoặc cài yarn chạy và chạy #`yarn start`
