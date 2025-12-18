@@ -10,6 +10,7 @@ namespace PointOfSale.Api.Services
         Task<M_Order> UpdateOrder(M_Order order);
         Task<M_Order> DeleteOrder(int orderId);
         Task<List<M_Order>> GetOrderList();
+        Task<M_Order> GetOrderById(int Id);
     }
 
     public class S_Order : IS_Order
@@ -33,6 +34,14 @@ namespace PointOfSale.Api.Services
         public Task<M_Order> DeleteOrder(int orderId)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<M_Order> GetOrderById(int Id)
+        {
+            return await _context.Orders
+            .Include(o => o.OrderProducts)
+            .ThenInclude(op => op.Product)
+            .FirstOrDefaultAsync(o => o.Id == Id);
         }
 
         public async Task<List<M_Order>> GetOrderList()

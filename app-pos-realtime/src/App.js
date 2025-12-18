@@ -9,8 +9,8 @@ function App() {
     <Routes>
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/order" element={<Order />} />
       </Route>
+      <Route path="/order" element={<Order />} />
     </Routes>
   );
 }

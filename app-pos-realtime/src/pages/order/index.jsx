@@ -1,28 +1,56 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import * as signalR from '@microsoft/signalr';
+import connection, { API_HOST } from '../../configs';
+import ItemOrder from './ItemOrder/ItemOrder';
+import axios from 'axios';
 
 const Order = () => {
-    return (
-        <div className="flex h-screen">
-            {/* Cột trái - scroll */}
-            <div className="flex-1 flex flex-col overflow-hidden border-r border-slate-200">
-                {/* Header nhỏ, cố định trên cùng nếu muốn */}
-                <div className="h-16 flex-shrink-0 flex items-center px-4 border-b bg-white">
-                    Thanh Select / Header
-                </div>
+    const [status, setStatus] = useState(false);
+    const [orders, setOrders] = useState([]);
 
-                {/* Container scroll */}
-                <div className="flex-1 overflow-y-auto p-4 bg-red-50">
-                    {Array.from({ length: 50 }).map((_, i) => (
-                        <div key={i} className="p-2 mb-2 border rounded bg-white">
-                            Item {i + 1}
-                        </div>
-                    ))}
-                </div>
+    useEffect(() => {
+        connection.start()
+            .then(() => { setStatus(true) })
+            .catch(err => console.log(err));
+
+        connection.on("ReceiveMessage", (message) => {
+            getOrderById(message.orderId)
+        });
+
+        return () => {
+            connection.off("ReceiveMessage");
+            setStatus(false)
+        }
+    }, []);
+
+    const getOrderById = async (orderId) => {
+        try {
+            const res = await axios.get(`${API_HOST}/Order/GetOrderById`, {
+                params: { Id: orderId }
+            });
+            if (res.data.success && res.data !== null) {
+                setOrders(prev => [res.data.data, ...prev]);
+            }
+        } catch (error) {
+            console.log("thất bại")
+        }
+    }
+
+    return (
+        <div className="flex flex-col h-screen bg-slate-100">
+            <div className='w-full pb-2 flex justify-center items-center gap-2'>
+                <h2 className='text-2xl font-bold'>Lịch sử đơn hàng</h2>
+                <div className={`w-3 h-3 rounded-full ${status ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`} />
             </div>
 
-            <div className="w-[25%] p-4 border-l border-slate-200 bg-gray-100 flex-shrink-0">
-                Nội dung cố định (không cuộn)
+            {/* list item */}
+            <div className="px-2 h-full overflow-y-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    {orders.map(item => (
+                        <ItemOrder data={item} key={item.id} />
+                    ))}
+                </div>
             </div>
         </div>
     )

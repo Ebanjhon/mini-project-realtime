@@ -25,17 +25,19 @@ builder.Services.AddSingleton<IAmazonS3>(sp =>
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAll", builder =>
+    options.AddPolicy("CorsPolicy", builder =>
     {
-        builder.AllowAnyOrigin()    // Cho phép tất cả origin
-               .AllowAnyHeader()    // Cho phép tất cả header
-               .AllowAnyMethod();   // Cho phép tất cả method (GET, POST, PUT, DELETE...)
+        builder.WithOrigins("http://localhost:3000")
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowCredentials();
     });
 });
 
+// Thêm SignalR
+builder.Services.AddSignalR();
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
@@ -52,7 +54,10 @@ builder.Services.AddScoped<S_Minio>();
 
 var app = builder.Build();
 
-app.UseCors("AllowAll");
+app.UseCors("CorsPolicy");
+
+// Map Hub
+app.MapHub<PointOfSale.Api.SignalR.OrderHub>("/orderhub");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

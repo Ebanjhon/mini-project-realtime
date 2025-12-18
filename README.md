@@ -4,7 +4,7 @@
  docker build -t name-image .
 
 # how to create container and run port: 8080
-docker run -d -p 8080:8080 --name pos-api-container pos.api
+docker run -d -p 8080:8080 --name name-container name-image
 
 # how to get list docker image
 docker images

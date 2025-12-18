@@ -1,6 +1,7 @@
 import React, { useState, forwardRef, useImperativeHandle } from 'react'
 import CartProductSelect from '../../../components/CartProductSelect/CartProductSelect';
 import { formatPrice } from '../../../utils';
+import { API_HOST } from '../../../configs';
 import axios from 'axios';
 
 const OrderDetail = forwardRef((props, ref) => {
@@ -56,7 +57,7 @@ const OrderDetail = forwardRef((props, ref) => {
         };
 
         try {
-            const res = await axios.post("https://localhost:44382/api/Order/CreateOrder", apiData);
+            const res = await axios.post(`${API_HOST}/Order/CreateOrder`, apiData);
             if (res.data.success) {
                 alert("Đơn hàng đã được tạo thành công!");
                 setProducts([]);

@@ -34,7 +34,7 @@ namespace PointOfSale.Api.Models
         public List<M_OrderDetail> OrderProducts { get; set; } = new();
     }
 
-    public class EM_ProductCreate
+    public class EM_ProductCreate : BaseModel
     {
         //public int Id { get; set; }
 

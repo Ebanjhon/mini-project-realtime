@@ -16,7 +16,7 @@ namespace PointOfSale.Api.Models
         public int Quantity { get; set; }
     }
 
-    public class EM_OrderCreate
+    public class EM_OrderCreate : BaseModel
     {
         //public int Id { get; set; }
         public int Status { get; set; } = 1;

@@ -19,7 +19,7 @@ namespace PointOfSale.Api.Services
         public async Task<List<M_Image>> UploadImages(List<IFormFile> images)
         {
             var bucket = _config["MinIO:Bucket"];
-            var endpoint = _config["MinIO:Endpoint"];
+            var endpoint = "http://localhost:9000";
 
             var result = new List<M_Image>();
 

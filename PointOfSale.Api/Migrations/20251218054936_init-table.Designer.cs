@@ -12,8 +12,8 @@ using PointOfSale.Api.Data;
 namespace PointOfSale.Api.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20251217181857_reinittable")]
-    partial class reinittable
+    [Migration("20251218054936_init-table")]
+    partial class inittable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

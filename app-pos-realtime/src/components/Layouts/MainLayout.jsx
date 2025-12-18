@@ -26,10 +26,10 @@ const MainLayout = () => {
                         <div className="flex flex-1 items-center justify-end gap-3">
                             <div className="text-right">
                                 <p className="text-sm font-semibold text-slate-800">
-                                    Nguyễn Văn A
+                                    Nhân viên: Y Jhon Êban
                                 </p>
                                 <p className="text-xs text-slate-500">
-                                    0901 234 567
+                                    038 6764 202
                                 </p>
                             </div>
                             <img

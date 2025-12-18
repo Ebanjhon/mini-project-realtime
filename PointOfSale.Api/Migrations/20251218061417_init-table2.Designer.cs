@@ -12,8 +12,8 @@ using PointOfSale.Api.Data;
 namespace PointOfSale.Api.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20251216171537_init-table")]
-    partial class inittable
+    [Migration("20251218061417_init-table2")]
+    partial class inittable2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -88,6 +88,46 @@ namespace PointOfSale.Api.Migrations
                     b.ToTable("Images");
                 });
 
+            modelBuilder.Entity("PointOfSale.Api.Models.M_Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("PointOfSale.Api.Models.M_OrderDetail", b =>
+                {
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("OrderId", "ProductId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderDetails");
+                });
+
             modelBuilder.Entity("PointOfSale.Api.Models.M_Product", b =>
                 {
                     b.Property<int>("Id")
@@ -110,6 +150,7 @@ namespace PointOfSale.Api.Migrations
                         .HasColumnType("bit");
 
                     b.Property<decimal>("Price")
+                        .HasPrecision(18, 2)
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ProductName")
@@ -156,12 +197,31 @@ namespace PointOfSale.Api.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("PointOfSale.Api.Models.M_OrderDetail", b =>
+                {
+                    b.HasOne("PointOfSale.Api.Models.M_Order", "Order")
+                        .WithMany("OrderProducts")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PointOfSale.Api.Models.M_Product", "Product")
+                        .WithMany("OrderProducts")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("PointOfSale.Api.Models.M_Product", b =>
                 {
                     b.HasOne("PointOfSale.Api.Models.M_Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Category");
@@ -172,9 +232,16 @@ namespace PointOfSale.Api.Migrations
                     b.Navigation("Products");
                 });
 
+            modelBuilder.Entity("PointOfSale.Api.Models.M_Order", b =>
+                {
+                    b.Navigation("OrderProducts");
+                });
+
             modelBuilder.Entity("PointOfSale.Api.Models.M_Product", b =>
                 {
                     b.Navigation("ImageObjs");
+
+                    b.Navigation("OrderProducts");
                 });
 #pragma warning restore 612, 618
         }

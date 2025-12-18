@@ -3,6 +3,7 @@ import CartProduct from '../../components/CartProduct/CartProduct';
 import ProductFilter from '../../components/ProductFilter/ProductFilter';
 import axios from 'axios';
 import OrderDetail from './OrderDetail/OrderDetail';
+import { API_HOST } from '../../configs';
 
 const Home = () => {
   const orderDetailRef = useRef();
@@ -14,7 +15,7 @@ const Home = () => {
 
   const fetchProducts = async (categoryId, keyword) => {
     try {
-      const res = await axios.get("https://localhost:44382/api/Product/GetProductList", {
+      const res = await axios.get(`${API_HOST}/Product/GetProductList`, {
         params: { categoryId, keyword }
       });
       setProducts(res.data.data);

@@ -171,4 +171,3 @@ D:\mini-project-realtime\PointOfSale.Api\obj\Debug\net10.0\refint\PointOfSale.Ap
 D:\mini-project-realtime\PointOfSale.Api\obj\Debug\net10.0\PointOfSale.Api.pdb
 D:\mini-project-realtime\PointOfSale.Api\obj\Debug\net10.0\PointOfSale.Api.genruntimeconfig.cache
 D:\mini-project-realtime\PointOfSale.Api\obj\Debug\net10.0\ref\PointOfSale.Api.dll
-D:\mini-project-realtime\PointOfSale.Api\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

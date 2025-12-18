@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Select from "react-select";
+import { API_HOST } from '../../configs';
 
 const ProductFilter = ({ handleFetchProduct }) => {
     const [options, setOptions] = useState([]);
@@ -9,7 +10,7 @@ const ProductFilter = ({ handleFetchProduct }) => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get("https://localhost:44382/api/Category/GetCategories");
+            const res = await axios.get(`${API_HOST}/Category/GetCategories`);
             const data = res.data.map(item => ({
                 value: item.id,
                 label: item.name,

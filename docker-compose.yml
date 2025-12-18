@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+
+  sqlserver:
+    build:
+      context: ./Database 
+      dockerfile: Dockerfile
+    container_name: sqlserver
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=3Ban@12345
+    ports:
+      - "1433:1433"
+    networks:
+      - app-network
+
+  minio:
+    build:
+      context: ./MinIO
+      dockerfile: Dockerfile
+    container_name: minio
+    environment:
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=3B@n12345
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio-data:/data
+    networks:
+      - app-network
+
+  webapi:
+    build:
+      context: ./PointOfSale.Api
+      dockerfile: Dockerfile
+    container_name: webapi
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - DOTNET_RUNNING_IN_CONTAINER=true
+      - DOTNET_USE_POLLING_FILE_WATCHER=true
+      - ASPNETCORE_ENVIRONMENT=Development
+      # ConnectionString đến SQL Server container
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=PosDatabase;User Id=sa;Password=3Ban@12345;Encrypt=False;TrustServerCertificate=True;
+      # Ví dụ cấu hình MinIO
+      - MINIO_URL=http://minio:9000
+      - MINIO_ACCESS_KEY=admin
+      - MINIO_SECRET_KEY=3B@n12345
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+      - sqlserver
+      - minio
+    networks:
+      - app-network
+
+# Docker network
+networks:
+  app-network:
+    driver: bridge
+
+# Docker volume cho MinIO
+volumes:
+  minio-data:
