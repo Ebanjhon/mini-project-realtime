@@ -3,6 +3,7 @@ import CartProductSelect from '../../../components/CartProductSelect/CartProduct
 import { formatPrice } from '../../../utils';
 import { API_HOST } from '../../../configs';
 import axios from 'axios';
+import { toast } from "react-toastify";
 
 const OrderDetail = forwardRef((props, ref) => {
     const [products, setProducts] = useState([]);
@@ -59,13 +60,13 @@ const OrderDetail = forwardRef((props, ref) => {
         try {
             const res = await axios.post(`${API_HOST}/Order/CreateOrder`, apiData);
             if (res.data.success) {
-                alert("Đơn hàng đã được tạo thành công!");
+                toast.success("Thanh toán thành công!");
                 setProducts([]);
             }else{
-                alert("Tạo đơn hàng thất bại. Vui lòng thử lại.");
+                toast.warning("Có lỗi xảy ra, vui lòng thử lại!");
             }
         } catch (error) {
-            console.error("Error fetching categories:", error);
+                toast.error("Có lỗi xảy ra!");
         }
     };
 

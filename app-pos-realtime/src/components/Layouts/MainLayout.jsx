@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, Outlet, useLocation } from 'react-router-dom'
-
+import avatar from '../../assets/images/avatar.jpg';
 const MainLayout = () => {
     const location = useLocation();
     return (
@@ -33,7 +33,7 @@ const MainLayout = () => {
                                 </p>
                             </div>
                             <img
-                                src="https://i.pravatar.cc/100"
+                                src={avatar}
                                 alt="avatar"
                                 className="h-10 w-10 rounded-full object-cover border border-slate-200"
                             />
