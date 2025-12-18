@@ -21,7 +21,6 @@ namespace PointOfSale.Api.Controllers
             _hubContext = hubContext;
         }
 
-
         [HttpGet]
         public async Task<IActionResult> GetListOrder()
         {
@@ -78,7 +77,6 @@ namespace PointOfSale.Api.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, new { success = false, message = "Có lỗi xảy ra: " + ex.Message });
-
             }
         }
 
@@ -94,7 +92,6 @@ namespace PointOfSale.Api.Controllers
         //    {
         //        return Ok(new { status = "Sent Message Error!" });
         //    }
-
         //}
 
     }

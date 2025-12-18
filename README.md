@@ -27,3 +27,11 @@ GO
 di chuyển đến thư mục app-pos-realtime
 - B1: build dự án chạy lệnh # `npm run build`
 - B2: chạy project dùng lệnh # `npm start` hoặc cài yarn chạy và chạy #`yarn start`
+
+## Hình ảnh về sản phẩm
+
+![Sản phẩm 1](/ImageAppPreview/image-preview-1.png)
+
+![Sản phẩm 2](/ImageAppPreview/image-preview-2.png)
+
+![Sản phẩm 3](/ImageAppPreview/image-preview-3.png)

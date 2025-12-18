@@ -13,10 +13,10 @@ const Home = () => {
     console.log("Thêm vào giỏ:", product);
   }
 
-  const fetchProducts = async (categoryId, keyword) => {
+  const fetchProducts = async (categoryId, textSearch) => {
     try {
       const res = await axios.get(`${API_HOST}/Product/GetProductList`, {
-        params: { categoryId, keyword }
+        params: { categoryId, textSearch }
       });
       setProducts(res.data.data);
     } catch (error) {
